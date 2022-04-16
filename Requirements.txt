@@ -1,3 +1,4 @@
-# Railway-Reservation-System
-
-Requirements-Python 3.9.1, Django 3.1.7
+asgiref==3.5.0
+Django==4.0.4
+sqlparse==0.4.2
+tzdata==2022.1
