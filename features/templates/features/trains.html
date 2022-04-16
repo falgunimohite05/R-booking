@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+         <!-- Latest compiled and minified CSS -->
+    {% load static %}
+
+    <script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+    <!--link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}"-->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 10px;
+        }
+        body{
+            background-image:url('{% static "images/bg8.jpg"%}');
+            background-size:100%;
+            background-repeat:no-repeat;
+
+
+        }
+        .sty
+        {
+            font-family: "Times New Roman", Times, serif;
+            color:white;
+        }
+        .hd
+        {
+            margin-left:500px;
+
+            }
+         
+        
+    </style>
+</head>
+<body>
+      <div class="p-4 lg:w-1/1">
+        <div class="h-full bg-white bg-opacity-80 px-6 pt-6 pb-6 rounded-lg overflow-hidden text-center relative">
+{%csrf_token%}
+           
+<h2 style="text-align:center;"><span class="sty" style="font-size:50px;color:black;"><b>Search Trains</b></span></h2>
+    <br/>
+   
+    <form class="tform" action="book1/" method="POST">
+        {%csrf_token%}
+        <div class="hd">
+          
+            <input type="text" value="{{src}}" name="src" readonly>--<input type="text" value="{{des}}" name="des" readonly ><br/>
+            <br>
+            <b>DATE OF JOURNEY:</b><input type="text" placeholder="DD/MM/YYYY" id="dt" name="date"><br/>
+            <br>
+        </div>
+    <h1 id="123"></h1>
+        <span hidden id="od">{{o}}</span>
+   <table style="margin-left:50px;font-size:20px;color:black;" class="table-striped table-bordered table-hover">
+        <tr class="sty" style="color:black;padding:10px;">
+           <th style="padding:10px;">Train Number</th>
+            <th style="padding:10px;">Arrival Station</th>
+            <th style="padding:10px;">Arrival Time</th>
+            <th style="padding:10px;">Select Class</th>
+            <th style="padding:10px;">Availibility</th>
+            <th style="padding:10px;">Fare/Seats</th>
+            <th style="padding:10px;">No of Seats</th>
+            <th style="padding:10px;">Book</th>
+        </tr>
+
+    {% for i in data %}
+        <tr>
+            <td style="padding:15px;"><h5 ><b>{{i.tno}}</b></h5></td>
+             <td style="padding:15px;"><h5><b>{{i.sid}}<b></h5></td>
+            <td style="padding:15px;"><h5><b>{{i.atime}}</b></h5></td>
+            <td><h6>
+                <select id="{{i.tno}}" onchange="x(this.value,this.id)" name="cls{{i.tno}}">
+                    <option value="NONE">NONE</option>
+                    <option value="AC">AC</option>
+                    <option value="2S">2S</option>
+                    <option value="3A">3A</option>
+                    <option value="SL">SL</option>
+                </select>
+            </h6></td>
+            <td ><h6 id="{{i.tno}}1"></h6></td>
+            <td><input id="{{i.tno}}p1" type="text" name="price{{i.tno}}" value="" readonly > </h6></td>
+            <td><input type="number" id="{{i.tno}}-2" name="nos{{i.tno}}"/></td>
+            <td>
+                <button type="submit" value="{{i.tno}}" name="bk" class="flex mx-auto mt-14 text-white bg-gray-700 border-0 py-2 px-6 focus:outline-none hover:bg-gray-800 rounded text-lg">Book Seat</button>
+
+            </td>
+        </tr>
+
+    {% endfor %}
+    </table>
+
+
+        </form>
+      <a href="http://127.0.0.1:8000/home"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
+
+  <script>
+    function x(vl,z)
+    {
+
+        var da=document.getElementById('dt').value;
+        var o=document.getElementById('od').innerHTML;
+        $.ajax({
+            type:'POST',
+            url:'search/trains/cva/',
+            data:{  tno:z,
+                    cls:vl,
+                    od:o,
+                    dt:da,
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+
+                  },
+        success:function(data){
+            var read=data.read;
+            var price=data.price;
+            $('#'+z+'1').html(data.read+" Seats");
+
+            $('#'+z+'p1').val(price);
+                               }
+            }
+                )
+    }
+      </script>
+        </div></div>
+</body>
+</html>

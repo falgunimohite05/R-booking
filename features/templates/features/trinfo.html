@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Train Schedule</title>
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+        }
+    </style>
+</head>
+<body>
+  <body background="{% static 'images/indi.jpg' %}"></body>
+    <section class="text-gray-800 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+
+
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <div class="p-4 lg:w-1/1">
+                <div class="h-full bg-white bg-opacity-85 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"><b>Train Schedule</b></h1>
+
+            <table style="width:100%">
+                <tr>
+                  <th><b>Station Id</b></th>
+                  <th><b>Arrival Time</b></th>
+                </tr>
+            {% for i in data %}
+                <tr>
+                    <td><h4>{{i.sid}}</h4> </td>
+                    <td><h4>{{i.atime}}</h4></td>
+                </tr>
+            {% endfor %}
+              </table>
+
+                    <button  class="flex mx-auto mt-16 text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-gray-800 rounded text-lg"><a href="http://127.0.0.1:8000/">Back to HOME</a></button>
+
+                </div>
+        </div>
+
+      </section>
+</body>
+</html>
+

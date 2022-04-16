@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Seat</title>
+</head>
+<body>
+  <body background=" {% static 'images/bg8.jpg' %}"style="background-repeat:no-repeat;background-size:cover ;"></body>
+  <section class="text-gray-800 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="p-4 lg:w-1/1">
+        <div class="h-full bg-white bg-opacity-80 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Select Trains</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Select source and destination to get desired train.</p>
+      </div>
+      <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+        <div class="relative flex-grow w-full">
+          <label  class="leading-7 text-sm text-gray-800"><b>Source</b></label>
+
+
+          <form action="trains" method="POST">
+            {% csrf_token %}
+          <select name="src" id="src" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-500 focus:border-gray-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+
+
+            <option value="" disabled selected hidden>Select Source</option>
+            {% for i in a %}
+            <option value="{{i.sid}}">{{i.sname}}</option>
+            {%endfor%}
+            </select>
+
+        </div>
+
+
+        <div class="relative flex-grow w-full">
+          <label  class="leading-7 text-sm text-gray-800"><b>Destination</b></label>
+          <select name="des" id="des" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-500 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+
+              <option value="" disabled selected hidden>Select Destination</option>
+              {% for i in a %}
+              <option value="{{i.sid}}">{{i.sname}}</option>
+              {%endfor%}
+              </select>
+
+          </div>
+                    <input type="submit" value="">
+            <button class="flex mx-auto mt-16 text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-gray-800 rounded text-lg">Search</button>
+
+          </form>
+        
+
+
+          </div>
+            <a href="http://127.0.0.1:8000/home"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

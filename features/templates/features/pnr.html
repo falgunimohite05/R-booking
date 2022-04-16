@@ -1,0 +1,176 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <title>PNR Enquiry</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+      }
+      body{
+          background-image:url('{% static "images/bg6.jpg"%}');
+          background-size:100%;
+          background-repeat:no-repeat;
+
+
+      }
+      .sty
+      {
+          font-family: "Times New Roman", Times, serif;
+          color:white;
+      }
+      .hd
+      {
+          margin-left:500px;
+
+          }
+
+
+  </style>
+  </head>
+<body>
+  <body background="{%static 'images/bg6.jpg' %}" style="background-repeat:no-repeat;background-size:cover ;"></body>
+{%if r%}
+<!--<h2 style="text-align:center"> Current Pnr Status</h2>--><br><br><br>
+  <h1 style="text-align:center" class="sm:text-5xl text-2xl font-medium title-font mb-4 text-gray-900 bg-white "><b>Train Schedule</b></h1><br><br>
+  <center>
+  <div class="fpnr">
+{%for i in r%}
+
+    <!--<h4 class="sty">PNR-{{i.pnr}}<br/>
+    NO of seats-{{i.nos}}<br/>
+    Status-{{i.status}}<br/><br/></h4>-->
+<table style="margin-left:50px;font-size:20px;color:black;" class="table-striped table-bordered table-hover">
+
+    <tr>
+        <th>PNR :</th>
+      <td style="padding:15px;"><h5 ><b>PNR-{{i.pnr}}</b></h5></td></tr>
+    <tr>
+    <th>.</th>
+    <td style="padding:15px;"><h5><b>.<b></h5></td></tr>
+    <tr>
+    <th>No. of Seats :</th>
+    <td style="padding:15px;"><h5><b>NO of seats-{{i.nos}}<b></h5></td></tr>
+
+    <tr>
+    <th>.</th>
+    <td style="padding:15px;"><h5><b>.</b></h5></td>
+    </tr>
+    <tr>
+    <th>Status :</th>
+    <td style="padding:15px;"><h5><b>Status-{{i.status}}</b></h5></td>
+    </tr>
+    <td><a href="http://127.0.0.1:8000/home"><button class="btn btn-success flex mx-auto mt-16 text-white bg-green-500 border-0 py-6 px-10 focus:outline-none hover:bg-green-700 rounded text-lg"><b>Back To Homepage</b></button></a></td>
+
+{%endfor%}
+        <!--a href="http://127.0.0.1:8000/home"><button class="btn btn-success">Back To Homepage</button></a>-->
+
+</div>
+      </center>
+
+
+{%else%}
+    <section class="text-gray-600 body-font">
+                            <form class="fpnr" action="" method="POST">
+    {%csrf_token%}
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+
+
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <div class="p-4 lg:w-1/1">
+                <div class="h-full bg-white bg-opacity-80 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                  <h1 class="sm:text-5xl text-2xl font-medium title-font mb-4 text-gray-900"><b>PNR Enquiry</b></h1><br>
+
+              <label for="full-name" class="leading-7 text-sm:text-4xl text-gray-900"><b>Enter PNR Number:</b> </label><br>
+
+              <input type="text" id="full-name" name="pnr" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-900 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <button class="sm:text-2xl flex mx-auto mt-16 text-white bg-gray-700 border-0 py-5 px-16 focus:outline-none hover:bg-gray-800 rounded text-lg"><b>Check</b></button>
+            </div>
+            <input type="submit" value="">
+
+         </div>
+        </div>
+                            </form>
+      </section>
+{%endif%}
+
+</body>
+</html>
+
+
+
+
+<!--{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <title>PNR Enquiry</title>
+</head>
+<body>
+  <body background="{%static 'images/pnbg.png' %}"></body>
+{%if r%}
+<h2 style="text-align:center"> Current Pnr Status</h2>
+<div class="fpnr">
+{%for i in r%}
+
+    <h4 class="sty">PNR-{{i.pnr}}<br/>
+    NO of seats-{{i.nos}}<br/>
+    Status-{{i.status}}<br/><br/></h4>
+
+{%endfor%}
+        <a href="http://127.0.0.1:8000/home"><button class="btn btn-success">Back To Homepage</button></a>
+
+</div>
+{%else%}
+    <section class="text-gray-600 body-font">
+                            <form class="fpnr" action="" method="POST">
+    {%csrf_token%}
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+
+
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <div class="p-4 lg:w-1/1">
+                <div class="h-full bg-white bg-opacity-80 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"><b>PNR Enquiry</b></h1>
+
+              <label for="full-name" class="leading-7 text-sm text-gray-900"><b>Enter PNR Number:</b> </label>
+
+              <input type="text" id="full-name" name="pnr" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-900 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <button class="flex mx-auto mt-16 text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-gray-800 rounded text-lg">check</button>
+            </div>
+            <input type="submit" value="">
+
+         </div>
+        </div>
+                            </form>
+      </section>
+{%endif%}
+</body>
+</html>
+-->

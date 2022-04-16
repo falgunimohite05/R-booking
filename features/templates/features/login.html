@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Ubuntu' %}" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <title>Log in</title>
+</head>
+
+<body>
+
+    <header class="text-gray-600 body-font bg-white">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-red-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Welcome to R-Booking</span>
+          </a>
+          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400    flex flex-wrap items-center text-base justify-center ">
+
+            <a href="index" class="mr-5 hover:text-gray-900"><b>Home</b></a>
+            <a href="schedule" class="mr-5 hover:text-gray-900"><b>Check Schedule</b></a>
+            <a href="#about" class="mr-5 hover:text-gray-900"><b>About Us</b></a>
+            <a href="contact" class="mr-5 hover:text-gray-900"><b>Contact</b></a>
+
+
+
+
+
+          </nav>
+
+        </div>
+      </header>
+
+
+  <!--<body background="{% static 'images/logbg.jpg' %}"></body>-->
+  <body style="background-color:rgb(247, 155, 112);">
+  <form action="" method="post">
+  <div class="main">
+
+    <p class="sign" align="center">Log in</p>
+
+    <form class="form1">
+      {% csrf_token %}
+    {% if error%}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endif %}
+      <input class="un " type="text" align="center" placeholder="Username" name="uname" required>
+      <input class="pass" type="password" align="center" placeholder="Password" name="psw" required>
+      <button class="submit" align="center">Log in</button>
+
+      <!--br><br><button class="submit" align="center"><a href="index">Home</a></button-->
+
+      <br><br><a href="register"><p align="center" style="color:gray;" >Not having an Account? Register here!</p></a>
+    </div>
+
+
+  </form>
+  </form>
+
+</body>
+
+</html>
+
