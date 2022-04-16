@@ -38,10 +38,10 @@
 
                   </form>
                     {% if request.session.member%}
-                    <a href="http://127.0.0.1:8000/home"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
+                    <a href="/home"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
 
                      {% else %}
-                    <a href="http://127.0.0.1:8000/index"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
+                    <a href="/index"><button class="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">Back To Homepage</button></a>
                     {% endif %}
                     </div>
          </div>         
