@@ -25,7 +25,7 @@ SECRET_KEY = 'od1w#klw_u&(6urndd290!-!)gqz9k+nj6oc*7omsw4il9ewe@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['r-booking.azurewebsites.net']
+ALLOWED_HOSTS = ['r-booking.azurewebsites.net','rbooking.azurewebsites.net']
 CSRF_TRUSTED_ORIGINS = ['https://r-booking.azurewebsites.net']
 
 
