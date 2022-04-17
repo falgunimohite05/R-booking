@@ -26,7 +26,7 @@ SECRET_KEY = 'od1w#klw_u&(6urndd290!-!)gqz9k+nj6oc*7omsw4il9ewe@'
 DEBUG = True
 
 ALLOWED_HOSTS = ['r-booking.azurewebsites.net','rbooking.azurewebsites.net']
-CSRF_TRUSTED_ORIGINS = ['https://r-booking.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://r-booking.azurewebsites.net', 'https://rbooking.azurewebsites.net']
 
 
 # Application definition
